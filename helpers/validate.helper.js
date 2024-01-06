@@ -5,7 +5,7 @@ const main = async (schema, body) => {
     await schema.validateAsync(body);
   } catch (error) {
     console.log(error);
-    errors.schemaValidationError();
+    errors.schemaValidationError(error.details[0]?.message);
   }
 };
 

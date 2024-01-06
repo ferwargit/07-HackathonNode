@@ -11,3 +11,5 @@ const main = async (req, res, next) => {
     next(error);
   }
 };
+
+export default main;
