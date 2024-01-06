@@ -1,7 +1,5 @@
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import errors from './errors.helper';
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -23,6 +21,7 @@ const sendTo = async (emailTo, subject, body) => {
     await transporter.sendMail(mail);
   } catch (error) {
     console.error(error);
+    errors.sendEmailError();
   }
 };
 
