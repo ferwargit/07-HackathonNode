@@ -1,5 +1,5 @@
 import randomstring from 'randomstring';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 import validateSchema from '../../helpers/validate.helper.js';
 import schema from '../../schemas/user/register.schema.js';
 import userService from '../../services/user/index.service.js';
@@ -9,16 +9,16 @@ const main = async (req, res, next) => {
     // Recibo la información y la valido
     await validateSchema(schema, req.body);
     // La desestructuro
-    const { email, username, password } = req.body;
+    const { username, password, email } = req.body;
     // Random string
     const registrationCode = randomstring.generate(30);
     // Encripto la contraseña
     const passwordEncoded = await bcrypt.hash(password, 5);
     // Llamo al servicio
     await userService.register(
-      email,
       username,
       passwordEncoded,
+      email,
       registrationCode
     );
 
