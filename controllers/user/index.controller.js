@@ -6,6 +6,7 @@ import login from './login.controller.js';
 import profile from './profile.controller.js';
 import publicProfile from './publicProfile.controller.js';
 import editAvatar from './editAvatar.controller.js';
+import passwordRecover from './passwordRecover.controller.js';
 
 export default {
   // saludar,
@@ -16,4 +17,5 @@ export default {
   profile,
   publicProfile,
   editAvatar,
+  passwordRecover,
 };
