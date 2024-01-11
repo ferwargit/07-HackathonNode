@@ -1,6 +1,10 @@
 import express from 'express';
 import entryController from '../controllers/entry/index.controller.js';
-import { authUser, canEdit } from '../middlewares/security/index.middleware.js';
+import {
+  authUser,
+  canEdit,
+  canVote,
+} from '../middlewares/security/index.middleware.js';
 import { userExists } from '../middlewares/user/index.middleware.js';
 import { entryExists } from '../middlewares/entry/index.middleware.js';
 
@@ -22,6 +26,14 @@ router.delete(
   entryExists,
   canEdit,
   entryController.deletePhoto
+);
+router.post(
+  '/entries/:entryId/votes',
+  authUser,
+  userExists,
+  entryExists,
+  canVote,
+  entryController.vote
 );
 
 export default router;
