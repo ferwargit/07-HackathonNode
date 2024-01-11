@@ -1,5 +1,3 @@
-// import saludar from './saludar.controller.js';
-// import despedir from './despedir.controller.js';
 import register from './register.controller.js';
 import validate from './validate.controller.js';
 import login from './login.controller.js';
@@ -8,10 +6,9 @@ import publicProfile from './publicProfile.controller.js';
 import editAvatar from './editAvatar.controller.js';
 import passwordRecover from './passwordRecover.controller.js';
 import passwordUpdateByRecover from './passwordUpdateByRecover.controller.js';
+import passwordChange from './passwordChange.controller.js';
 
 export default {
-  // saludar,
-  // despedir,
   register,
   validate,
   login,
@@ -20,4 +17,5 @@ export default {
   editAvatar,
   passwordRecover,
   passwordUpdateByRecover,
+  passwordChange,
 };

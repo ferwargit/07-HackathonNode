@@ -2,12 +2,9 @@ import express from 'express';
 import userController from '../controllers/user/index.controller.js';
 import { authUser } from '../middlewares/security/index.middleware.js';
 import { userExists } from '../middlewares/user/index.middleware.js';
-// import securityMiddleware from '../middlewares/security/primer.middleware.js';
 
 const router = express.Router();
 
-// router.get('/users/hola', securityMiddleware, userController.saludar);
-// router.get('/users/chau', securityMiddleware, userController.despedir);
 router.post('/users/register', userController.register);
 router.get('/users/validate/:registrationCode', userController.validate);
 router.post('/users/login', userController.login);
@@ -16,5 +13,11 @@ router.get('/users/profile/:userId', userExists, userController.publicProfile);
 router.put('/users/avatar', authUser, userExists, userController.editAvatar);
 router.post('/users/password/recover', userController.passwordRecover);
 router.put('/users/password/recover', userController.passwordUpdateByRecover);
+router.put(
+  '/users/password/change',
+  authUser,
+  userExists,
+  userController.passwordChange
+);
 
 export default router;
